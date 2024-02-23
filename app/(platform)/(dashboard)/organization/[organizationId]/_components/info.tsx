@@ -1,7 +1,9 @@
 "use client"
+import FormPopover from '@/components/form/form-popover';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useOrganization } from '@clerk/nextjs'
-import { CreditCard } from 'lucide-react';
+import { CreditCard, Plus } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 
@@ -18,24 +20,37 @@ const Info = ({ isPro }: InfoProps) => {
     }
 
     return (
-        <div className='flex items-center gap-x-4'>
-            <div className="w-[60px] h-[60px] relative">
-                <Image
-                    fill
-                    src={organization?.imageUrl!}
-                    alt='Organization'
-                    className='rounded-md object-cover'
-                />
-            </div>
-            <div className="space-y-1">
-                <p className="font-semibold text-xl">
-                    {organization?.name}
-                </p>
-                <div className="flex items-center text-xs text-muted-foreground">
-                    <CreditCard className='h-3 w-3 mr-1' />
-                    {isPro ? "Pro" : "Free"}
+        <div className="flex items-center justify-between">
+            <div className='flex items-center gap-x-4'>
+                <div className="w-[60px] h-[60px] relative">
+                    <Image
+                        fill
+                        src={organization?.imageUrl!}
+                        alt='Organization'
+                        className='rounded-md object-cover'
+                    />
+                </div>
+                <div className="space-y-1">
+                    <p className="font-semibold text-xl">
+                        {organization?.name}
+                    </p>
+                    <div className="flex items-center text-xs text-muted-foreground">
+                        <CreditCard className='h-3 w-3 mr-1' />
+                        {isPro ? "Pro" : "Free"}
+                    </div>
                 </div>
             </div>
+            <FormPopover>
+                <Button size={"sm"} variant="primary" className='rounded-sm block md:hidden '>
+                    <Plus className='h-4 w-4' />
+                </Button>
+            </FormPopover>
+            <FormPopover align='start' side='bottom' sideOffset={18}>
+                <Button size={"lg"} variant={"default"} className='rounded-sm hidden md:block h-auto py-1.5 px-2'>
+                    Create
+                </Button>
+            </FormPopover>
+
         </div>
     )
 }

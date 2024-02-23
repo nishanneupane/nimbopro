@@ -53,7 +53,7 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     }
 
     return (
-        <>
+        <div className='bg-white border-r border-1 border-gray-200 h-screen px-2'>
             <div className="font-medium text-xs flex items-center mb-1">
                 <span className='pl-4'>Workspaces</span>
                 <Button asChild type='button' size={"icon"} variant={"ghost"} className='ml-auto'>
@@ -72,7 +72,7 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
                     <NavItem key={organization.id} isActive={activeOrganization?.id === organization.id} isExpanded={expanded[organization.id]} organization={organization as Organization} onExpand={onExpand} />
                 ))}
             </Accordion>
-        </>
+        </div>
     )
 }
 
