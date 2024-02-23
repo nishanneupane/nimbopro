@@ -15,11 +15,6 @@ const Navbar = () => {
                             Login
                         </Link>
                     </Button>
-                    <Button  size={"sm"} variant={"default"} asChild>
-                        <Link href={"/sign-up"}>
-                            Get Taskify for free
-                        </Link>
-                    </Button>
                 </div>
             </div>
         </div>

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: SiteConfig.description,
   icons:[
     {
-      url:"/logo.svg",
-      href:"/logo.svg"
+      url:"/logo.png",
+      href:"/logo.png",
     }
   ]
 }

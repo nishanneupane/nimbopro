@@ -1,4 +1,4 @@
 export const SiteConfig = {
-  name: "Taskify Pro",
+  name: "Nimbo Pro",
   description: "Collaborate,manage projects and reach productivity peaks.",
 };
