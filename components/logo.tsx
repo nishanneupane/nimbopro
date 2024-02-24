@@ -18,7 +18,7 @@ const Logo = () => {
                     height={60}
                     width={60}
                 />
-                <p className={cn("text-lg text-neutral-500 pb-1",headingFont.className)}>Nimbopro</p>
+                <p className={cn("text-lg text-neutral-300 pb-1",headingFont.className)}>Nimbopro</p>
             </div>
         </Link>
     )

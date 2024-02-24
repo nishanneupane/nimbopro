@@ -8,36 +8,37 @@ body,:root {
 }
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 0 0% 3.9%; /* Dark background color */
+    --foreground: 0 0% 98%; /* Light text color */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card: 0 0% 3.9%; /* Dark card background color */
+    --card-foreground: 0 0% 98%; /* Light text color on card */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover: 0 0% 3.9%; /* Dark popover background color */
+    --popover-foreground: 0 0% 98%; /* Light text color on popover */
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* Light primary color */
+    --primary-foreground: 0 0% 9%; /* Dark text color for primary elements */
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%; /* Slightly darker secondary color */
+    --secondary-foreground: 0 0% 98%; /* Light text color for secondary elements */
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 0 0% 14.9%; /* Slightly darker muted color */
+    --muted-foreground: 0 0% 63.9%; /* Darker text color for muted elements */
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 0 0% 14.9%; /* Slightly darker accent color */
+    --accent-foreground: 0 0% 98%; /* Light text color for accent elements */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%; /* Darker destructive color */
+    --destructive-foreground: 0 0% 98%; /* Light text color for destructive elements */
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 0 0% 14.9%; /* Slightly darker border color */
+    --input: 0 0% 14.9%; /* Slightly darker input color */
+    --ring: 0 0% 83.1%; /* Lighter ring color */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Border radius */
   }
+
 
   .dark {
     --background: 0 0% 3.9%;
