@@ -78,7 +78,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
                     value={listId}
                 />
                 <div className="flex items-center gap-x-1">
-                    <FormSubmit>
+                    <FormSubmit variant='primary' className={"text-white"}>
                         Add card
                     </FormSubmit>
                     <Button
@@ -97,7 +97,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
             <Button
                 onClick={enableEditing}
                 className='h-auto px-2 py-1.5 w-full justify-start text-muted-foreground text-sm'
-                variant={"ghost"}
+                variant={"primary"}
                 size={"sm"}
             >
                 <Plus className='h-4 w-4 mr-2' />

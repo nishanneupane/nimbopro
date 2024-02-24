@@ -61,7 +61,7 @@ const ListForm = () => {
                 <form
                     action={onSubmit}
                     ref={formRef}
-                    className='w-full p-3 rounded-md bg-white space-y-4 shadow-md'
+                    className='w-full p-3 rounded-md bg-black space-y-4 shadow-md'
                 >
                     <FormInput
                         ref={inputRef}
@@ -98,7 +98,7 @@ const ListForm = () => {
 
             <button
                 onClick={enableEditing}
-                className='w-full rounded-md bg-white/80 hover:bg-white/50 transition p-3 flex items-center font-medium text-sm'
+                className='w-full rounded-md bg-black/80 hover:bg-black/50 transition p-3 flex items-center font-medium text-sm'
             >
                 <Plus className='h-4 w-4 mr-2' />
                 Add a list</button>

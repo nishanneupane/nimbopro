@@ -1,15 +1,12 @@
 "use client"
 import Logo from '@/components/logo'
-import { Button } from '@/components/ui/button'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
-import { Plus } from 'lucide-react'
 import React from 'react'
 import MobileSidebar from './mobile-sidebar'
-import FormPopover from '@/components/form/form-popover'
 
 const Navbar = () => {
     return (
-        <nav className='fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center'>
+        <nav className='fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-black flex items-center'>
             <MobileSidebar />
             <div className="flex items-center gap-4">
                 <div className='hidden md:flex '>
@@ -17,7 +14,8 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="ml-auto flex items-center gap-x-2">
+            <div className="ml-auto flex items-center gap-x-2 ">
+                <div className='bg-slate-700 p-2 rounded-md'>
                 <OrganizationSwitcher
                     hidePersonal
                     afterCreateOrganizationUrl={"/organization/:id"}
@@ -30,9 +28,10 @@ const Navbar = () => {
                                 justifyContent: "center",
                                 alignItems: "center"
                             }
-                        }
+                        },
                     }}
                 />
+                </div>
 
                 <UserButton afterSignOutUrl='/' appearance={{
                     elements: {

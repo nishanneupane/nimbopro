@@ -58,8 +58,8 @@ const Actions = ({ data }: { data: CardWithList }) => {
             <Button
                 onClick={onCopy}
                 disabled={isLoadingCopy}
-                variant={"gray"}
-                className='w-full justify-start'
+                variant={"ghost"}
+                className='w-full justify-start text-white'
                 size={"inline"}
             >
                 <Copy className='h-4 w-4 mr-2' />
@@ -68,8 +68,8 @@ const Actions = ({ data }: { data: CardWithList }) => {
             <Button
                 onClick={onDelete}
                 disabled={isLoadingDelete}
-                variant={"gray"}
-                className='w-full justify-start'
+                variant={"destructive"}
+                className='w-full justify-start text-white'
                 size={"inline"}
             >
                 <Trash className='h-4 w-4 mr-2' />

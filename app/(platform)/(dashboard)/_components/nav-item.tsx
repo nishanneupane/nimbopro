@@ -55,7 +55,7 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
             value={organization.id}
             className='border-none'
         >
-            <AccordionTrigger onClick={() => onExpand(organization.id)} className={cn("flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline", isActive && !isExpanded && "bg-sky-500/10 text-sky-700")}>
+            <AccordionTrigger onClick={() => onExpand(organization.id)} className={cn("flex items-center gap-x-2 p-1.5 text-neutral-200 rounded-md hover:bg-neutral-200/10 transition text-start no-underline hover:no-underline", isActive && !isExpanded && "bg-sky-200/10 text-sky-400")}>
                 <div className="flex items-center gap-x-2">
                     <div className="w-7 h-7 relative">
                         <Image
@@ -68,7 +68,7 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
                     <span className="font-medium text-sm">{organization.name}</span>
                 </div>
             </AccordionTrigger>
-            <AccordionContent className='pt-1 text-neutral-700'>
+            <AccordionContent className='pt-1 text-neutral-200'>
                 {routes.map((route) => (
                     <Button key={route.href} size={"sm"} onClick={() => onClick(route.href)} className={cn("w-full font-normal justify-start pl-10 mb-1", pathname === route.href && "bg-sky-500/10 text-sky-700")} variant={"ghost"}>
                         {route.icon}
