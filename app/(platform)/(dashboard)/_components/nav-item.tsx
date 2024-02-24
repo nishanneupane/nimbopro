@@ -38,11 +38,11 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
             icon: <Settings className='h-4 w-4 mr-2' />,
             href: `/organization/${organization.id}/settings`
         },
-        {
-            label: "Billing",
-            icon: <CreditCard className='h-4 w-4 mr-2' />,
-            href: `/organization/${organization.id}/billing`
-        },
+        // {
+        //     label: "Billing",
+        //     icon: <CreditCard className='h-4 w-4 mr-2' />,
+        //     href: `/organization/${organization.id}/billing`
+        // },
     ];
     const router = useRouter()
     const pathname = usePathname()
