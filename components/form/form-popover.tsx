@@ -45,12 +45,12 @@ const FormPopover = ({ children, side = "bottom", align, sideOffset = 0 }: FormP
                 {children}
             </PopoverTrigger>
             <PopoverContent align={align} className='w-80 pt-3' side={side} sideOffset={sideOffset}>
-                <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+                <div className="text-sm font-medium text-center text-neutral-200 pb-4">
                     Create board
                 </div>
                 <PopoverClose ref={closeRef} asChild>
                     <Button
-                        className=' h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600'
+                        className=' h-auto w-auto p-2 absolute top-2 right-2 text-neutral-200'
                         variant={"ghost"}
                     >
                         <X className='w-4 h-4 ' />
@@ -68,7 +68,7 @@ const FormPopover = ({ children, side = "bottom", align, sideOffset = 0 }: FormP
                             errors={fieldErrors}
                         />
                     </div>
-                    <FormSubmit className='w-full'>Create</FormSubmit>
+                    <FormSubmit className='w-full text-neutral-200'>Create</FormSubmit>
                 </form>
             </PopoverContent>
         </Popover>

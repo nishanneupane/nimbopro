@@ -27,6 +27,9 @@ const Navbar = () => {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 color: "#000",
+                                backgroundColor:"gray",
+                                padding:"2px",
+                                borderRadius:"10px"
 
                             },
                         },
