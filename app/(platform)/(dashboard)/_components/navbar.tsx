@@ -15,7 +15,6 @@ const Navbar = () => {
             </div>
 
             <div className="ml-auto flex items-center gap-x-2 ">
-                <div className='bg-slate-700 p-2 rounded-md'>
                 <OrganizationSwitcher
                     hidePersonal
                     afterCreateOrganizationUrl={"/organization/:id"}
@@ -29,9 +28,12 @@ const Navbar = () => {
                                 alignItems: "center"
                             }
                         },
+                        variables: {
+                            colorText: "#fff"
+                        },
+
                     }}
                 />
-                </div>
 
                 <UserButton afterSignOutUrl='/' appearance={{
                     elements: {
