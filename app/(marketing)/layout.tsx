@@ -9,7 +9,7 @@ const MarketingLayout = ({ children }: { children: React.ReactNode }) => {
             <main className='pt-20 pb-20 bg-slate-900'>
                 {children}
             </main>
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     )
 }
