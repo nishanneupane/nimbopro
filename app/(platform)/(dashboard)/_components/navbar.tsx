@@ -25,12 +25,17 @@ const Navbar = () => {
                             rootBox: {
                                 display: "flex",
                                 justifyContent: "center",
-                                alignItems: "center"
-                            }
+                                alignItems: "center",
+                                color: "#000",
+
+                            },
                         },
                         variables: {
-                            colorText: "#fff"
-                        },
+                            colorText: "#000",
+                            colorBackground: "#D3D0CB",
+
+                        }
+
 
                     }}
                 />
@@ -40,7 +45,12 @@ const Navbar = () => {
                         avatarBox: {
                             height: 30,
                             width: 30
-                        }
+                        },
+
+                    },
+                    variables: {
+                        colorBackground: "#D3D0CB",
+                        colorText: "#000"
                     }
                 }} />
             </div>

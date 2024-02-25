@@ -17,6 +17,10 @@ const SettingsPage = () => {
                             width: "100%"
                         }
                     },
+                    variables:{
+                        colorBackground:"#000",
+                        colorText:"#fff"
+                    }
 
                 }}
             />

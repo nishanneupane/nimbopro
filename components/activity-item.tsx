@@ -27,9 +27,13 @@ const ActivityItem = ({ data }: ActivityItemProps) => {
                 </p>
 
                 <p className='text-xs text-muted-foreground'>
-                    {
+                    {/* {
                         format(new Date(data.createdAt), "MMM d,yyyy 'at' h:mm a")
+                    } */}
+                    {
+                        new Date(data.createdAt).toLocaleString('en-US', { timeZone: 'Asia/Kathmandu', hour12: true, year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })
                     }
+
                 </p>
             </div>
         </li>
