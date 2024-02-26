@@ -1,9 +1,11 @@
 "use client"
 import FormPopover from '@/components/form/form-popover';
+import PromptPopover from '@/components/prompt/prompt-popover';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useOrganization } from '@clerk/nextjs'
-import { CreditCard, Plus } from 'lucide-react';
+import { Bot, CreditCard, Plus } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 
@@ -40,16 +42,39 @@ const Info = ({ isPro }: InfoProps) => {
                     </div>
                 </div>
             </div>
-            <FormPopover>
-                <Button size={"sm"} variant="primary" className='rounded-sm block md:hidden '>
-                    <Plus className='h-4 w-4' />
-                </Button>
-            </FormPopover>
-            <FormPopover align='start' side='bottom' sideOffset={18}>
-                <Button size={"lg"} variant={"default"} className='rounded-sm hidden md:block h-auto py-1.5 px-2'>
-                    Create
-                </Button>
-            </FormPopover>
+            <div className='flex items-center justify-end gap-2'>
+                <FormPopover>
+                    <Button size={"sm"} variant="primary" className='rounded-sm block md:hidden font-bold text-white'>
+                        <Plus className='h-4 w-4' />
+                    </Button>
+
+                </FormPopover>
+                <PromptPopover align='start' side='right' sideOffset={18}>
+                    <Button size={"sm"} variant="primary" className='rounded-sm block md:hidden relative font-bold text-white'>
+                        <Bot className='h-4 w-4' />
+                        <Badge className='absolute -top-2 -right-[12px] text-xs scale-50'>
+                            upcoming
+                        </Badge>
+                    </Button>
+                </PromptPopover>
+            </div>
+            <div className='flex items-center justify-end gap-2'>
+                <FormPopover align='start' side='bottom' sideOffset={18}>
+                    <Button size={"lg"} variant={"default"} className='rounded-sm hidden md:block h-auto py-1.5 px-2'>
+                        Create
+                    </Button>
+
+                </FormPopover>
+                <PromptPopover align='start' side='right' sideOffset={18}>
+                    <Button size={"lg"} variant={"default"} className='relative rounded-sm hidden md:flex h-auto py-1.5 px-2 bg-gradient-to-r from-teal-500 to-sky-600 text-white font-bold '>
+                        Generate with ai
+                        <Bot className='h-4 w-4 ml-2' />
+                        <Badge className='absolute -top-2 -right-2 text-xs scale-50'>
+                            upcoming
+                        </Badge>
+                    </Button>
+                </PromptPopover>
+            </div>
 
         </div>
     )
