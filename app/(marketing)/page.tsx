@@ -53,10 +53,10 @@ const MarketingPage = () => {
                             { icon: Users, title: "Team Collaboration", description: "Foster teamwork with intuitive sharing features." },
                             { icon: Lock, title: "Enhanced Security", description: "Keep your data safe with advanced encryption." },
                         ].map((feature, index) => (
-                            <div 
+                            <div
                                 key={index}
                                 className="bg-gray-700 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 group animate-fade-in-up"
-                                style={{animationDelay: `${index * 100}ms`}}
+                                style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <feature.icon className="h-16 w-16 mb-6 text-blue-400 group-hover:text-purple-400 transition-colors duration-300" />
                                 <h3 className="text-2xl font-semibold mb-4 text-white">{feature.title}</h3>
@@ -78,23 +78,25 @@ const MarketingPage = () => {
                             { name: "Free", price: "$0", features: ["Up to 5 Creations", "Basic Collaboration", "Responsive UI", "Essential Features"] },
                             { name: "Pro", price: "$20", features: ["Unlimited Creations", "Multi-Person Collaboration", "Rich Feature Set", "Responsive and UI Friendly", "Activity Tracking", "Priority Support", "Advanced Analytics"] },
                         ].map((plan, index) => (
-                            <div 
+                            <div
                                 key={index}
                                 className={`bg-gray-800 rounded-3xl p-10 shadow-2xl ${index === 1 ? 'border-2 border-blue-500 transform scale-105' : ''} hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up`}
-                                style={{animationDelay: `${index * 200}ms`}}
+                                style={{ animationDelay: `${index * 200}ms` }}
                             >
                                 <h3 className="text-3xl font-bold mb-4 text-white">{plan.name}</h3>
                                 <p className="text-5xl font-bold mb-8 text-white">{plan.price}<span className="text-2xl font-normal text-gray-400">{index === 0 ? '' : '/month'}</span></p>
                                 <ul className="mb-10 space-y-4">
                                     {plan.features.map((feature, fIndex) => (
-                                        <li key={fIndex} className="flex items-center text-gray-300 text-lg">
+                                        <li key={fIndex} className="flex items-center text-gray-300 text-lg" >
                                             <Zap className="h-6 w-6 mr-3 text-blue-400" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                                 <Button className={`w-full py-4 rounded-full font-semibold text-xl ${index === 1 ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700' : 'bg-gray-700 text-white hover:bg-gray-600'} transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105`}>
-                                    {index === 0 ? 'Get Started' : 'Upgrade to Pro'}
+                                    <Link href={index === 0 ? '/sign-up' : '/sign-in'}>
+                                        {index === 0 ? 'Get Started' : 'Upgrade to Pro'}
+                                    </Link>
                                 </Button>
                             </div>
                         ))}

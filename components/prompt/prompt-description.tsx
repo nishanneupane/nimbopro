@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import FormErrors from "../form/form-errors";
 import { Textarea } from "../ui/textarea";
 
-
 interface PromptDescriptionProps {
     id: string;
     label?: string;
@@ -37,12 +36,12 @@ export const PromptDescription = forwardRef<HTMLTextAreaElement, PromptDescripti
     const { pending } = useFormStatus();
 
     return (
-        <div className="space-y-2">
-            <div className="space-y-1">
+        <div className="space-y-3">
+            <div className="space-y-2">
                 {label ? (
                     <Label
                         htmlFor={id}
-                        className="text-xs font-semibold text-neutral-700"
+                        className="text-sm font-medium text-gray-200 tracking-wide"
                     >
                         {label}
                     </Label>
@@ -55,10 +54,9 @@ export const PromptDescription = forwardRef<HTMLTextAreaElement, PromptDescripti
                     name={id}
                     id={id}
                     placeholder={placeholder}
-                    // type={type}
                     disabled={pending || disabled}
                     className={cn(
-                        "text-sm px-2 py-1 h-7",
+                        "text-base px-4 py-3 h-32 bg-gray-800 border border-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ease-in-out resize-none",
                         className,
                     )}
                     aria-describedby={`${id}-error`}
