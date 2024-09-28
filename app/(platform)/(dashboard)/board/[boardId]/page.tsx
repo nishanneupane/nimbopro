@@ -1,22 +1,20 @@
 import { db } from '@/lib/db';
 import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
-import React from 'react'
+import React, { Suspense } from 'react'
 import ListContainer from './_components/list-container';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface BoardIdPageProps {
     params: {
         boardId: string;
     }
 }
-const BoardIdPage = async ({ params }: BoardIdPageProps) => {
-    const { orgId } = auth();
-    if (!orgId) {
-        redirect("select-org")
-    }
+
+const BoardContent = async ({ boardId, orgId }: { boardId: string, orgId: string }) => {
     const lists = await db.list.findMany({
         where: {
-            boardId: params.boardId,
+            boardId: boardId,
             board: {
                 orgId
             }
@@ -32,14 +30,26 @@ const BoardIdPage = async ({ params }: BoardIdPageProps) => {
             order: "asc"
         }
     })
+
     return (
-        <div
-            className='p-4 h-full overflow-x-auto'
-        >
-            <ListContainer
-                boardId={params.boardId}
-                data={lists}
-            />
+        <ListContainer
+            boardId={boardId}
+            data={lists}
+        />
+    )
+}
+
+const BoardIdPage = async ({ params }: BoardIdPageProps) => {
+    const { orgId } = auth();
+    if (!orgId) {
+        redirect("/select-org")
+    }
+
+    return (
+        <div className='p-4 h-full overflow-x-auto'>
+            <Suspense fallback={<Skeleton className="h-full w-full" />}>
+                <BoardContent boardId={params.boardId} orgId={orgId} />
+            </Suspense>
         </div>
     )
 }

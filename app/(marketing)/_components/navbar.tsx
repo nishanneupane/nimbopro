@@ -5,19 +5,25 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <div className="fixed top-0 w-full h-14 px-4 border-b shadow-sm bg-black flex items-center">
-            <div className="md:max-w-screen-2xl mx-auto flex items-center w-full justify-between">
+        <nav className="fixed top-0 w-full h-16 px-6 bg-gray-900 flex items-center z-10">
+            <div className="max-w-7xl mx-auto flex items-center w-full justify-between">
                 <Logo />
 
-                <div className="space-x-4 md:block md:w-auto flex items-center justify-between w-full">
-                    <Button size={"sm"} variant={"outline"} asChild>
-                        <Link href={"/sign-in"}>
+                <div className="flex items-center space-x-6">
+                    <Link href="#features" className="text-white hover:text-gray-200 transition-colors">
+                        Features
+                    </Link>
+                    <Link href="#pricing" className="text-white hover:text-gray-200 transition-colors">
+                        Pricing
+                    </Link>
+                    <Button size="sm" variant="secondary" asChild className="bg-gray-800 text-white hover:bg-gray-700 transition-colors">
+                        <Link href="/sign-in">
                             Login
                         </Link>
                     </Button>
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

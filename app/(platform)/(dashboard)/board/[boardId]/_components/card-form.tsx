@@ -1,4 +1,5 @@
 "use client"
+
 import { createCard } from '@/actions/create-card';
 import FormSubmit from '@/components/form/form-submit';
 import { FormTextarea } from '@/components/form/form-textarea';
@@ -15,8 +16,8 @@ interface CardFormProps {
     enableEditing: () => void;
     disableEditing: () => void;
     isEditing: boolean;
-
 }
+
 const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enableEditing, disableEditing, isEditing }, ref) => {
     const params = useParams();
     const formRef = useRef<ElementRef<"form">>(null);
@@ -57,12 +58,13 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
             boardId
         })
     }
+
     if (isEditing) {
         return (
             <form
                 ref={formRef}
                 action={onSubmit}
-                className=',-1 py-0.5 px-1 space-y-4'
+                className='bg-gray-900 shadow-lg rounded-lg p-4 space-y-4'
             >
                 <FormTextarea
                     id='title'
@@ -70,6 +72,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
                     ref={ref}
                     placeholder='Enter a title for this card ..'
                     errors={fieldErrors}
+                    className='w-full resize-none border-none rounded-md focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white placeholder-gray-400'
                 />
                 <input
                     hidden
@@ -77,14 +80,18 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
                     name='listId'
                     value={listId}
                 />
-                <div className="flex items-center gap-x-1">
-                    <FormSubmit variant='primary' className={"text-white"}>
+                <div className="flex items-center gap-x-2">
+                    <FormSubmit 
+                        variant='primary'
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 shadow-md"
+                    >
                         Add card
                     </FormSubmit>
                     <Button
                         onClick={disableEditing}
-                        size={"sm"}
-                        variant={"ghost"}
+                        size="sm"
+                        variant="ghost"
+                        className="text-gray-400 hover:text-gray-200 transition duration-200"
                     >
                         <X className='h-5 w-5' />
                     </Button>
@@ -92,13 +99,14 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
             </form>
         )
     }
+
     return (
         <div className='pt-2 px-2'>
             <Button
                 onClick={enableEditing}
-                className='h-auto px-2 py-1.5 w-full justify-start text-muted-foreground text-sm'
-                variant={"primary"}
-                size={"sm"}
+                className='h-auto px-4 py-3 w-full justify-start text-gray-300 text-sm bg-gray-800 hover:bg-gray-700 transition duration-200 rounded-lg shadow-md'
+                variant="ghost"
+                size="sm"
             >
                 <Plus className='h-4 w-4 mr-2' />
                 Add a card

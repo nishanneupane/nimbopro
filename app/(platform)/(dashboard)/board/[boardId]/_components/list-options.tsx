@@ -7,7 +7,7 @@ import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from '@/compone
 import { Separator } from '@/components/ui/separator';
 import { useAction } from '@/hooks/use-action';
 import { List } from '@prisma/client'
-import { MoreHorizontal, X } from 'lucide-react';
+import { MoreHorizontal, X, Plus, Copy, Trash2 } from 'lucide-react';
 import React, { ElementRef, useRef } from 'react'
 import { toast } from 'sonner';
 
@@ -15,119 +15,104 @@ interface ListOptionsProps {
     data: List;
     onAddCard: () => void;
 }
+
 const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+    const closeRef = useRef<ElementRef<"button">>(null)
+
     const { execute: executeDelete } = useAction(deleteList, {
         onSuccess: (data) => {
-            toast.success(`List "${data.title}" deleted`)
+            toast.success(`List "${data.title}" deleted`, {
+                style: { background: '#10B981', color: '#fff' }
+            })
             closeRef.current?.click()
         },
         onError: (error) => {
-            toast.error(error)
+            toast.error(error, {
+                style: { background: '#EF4444', color: '#fff' }
+            })
         }
     })
 
     const { execute: executeCopy } = useAction(copyList, {
         onSuccess: (data) => {
-            toast.success(`List "${data.title}" copied`)
+            toast.success(`List "${data.title}" copied`, {
+                style: { background: '#3B82F6', color: '#fff' }
+            })
             closeRef.current?.click()
         },
         onError: (error) => {
-            toast.error(error)
+            toast.error(error, {
+                style: { background: '#EF4444', color: '#fff' }
+            })
         }
     })
-
-    const closeRef = useRef<ElementRef<"button">>(null)
 
     const onDelete = (formData: FormData) => {
         const id = formData.get("id") as string;
         const boardId = formData.get("boardId") as string;
-
         executeDelete({ id, boardId })
     }
 
     const onCopy = (formData: FormData) => {
         const id = formData.get("id") as string;
         const boardId = formData.get("boardId") as string;
-
         executeCopy({ id, boardId })
     }
+
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button
-                    className='h-auto w-auto p-2'
-                    variant={"ghost"}
-                >
-                    <MoreHorizontal className='h-4 w-4' />
-                </Button>
+                    <MoreHorizontal className='h-5 w-5 rounded-md text-gray-700 hover:text-gray-600 transition-colors ' />
             </PopoverTrigger>
             <PopoverContent
-                className='px-0 pt-3 pb-3'
+                className='w-64 p-0 rounded-lg shadow-lg bg-gray-800 border border-gray-700'
                 side='bottom'
-                align='start'
+                align='end'
             >
-                <div className="text-sm font-medium text-center text-neutral-600 pb-4">
-                    List actions
+                <div className="px-4 py-3 text-sm font-medium text-gray-200 border-b border-gray-700">
+                    List Actions
                 </div>
-                <PopoverClose
-                    ref={closeRef}
-                    asChild>
+                <PopoverClose ref={closeRef} asChild>
                     <Button
-                        className='h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600'
-                        variant={"ghost"}
+                        className='h-6 w-6 p-0 absolute top-2 right-2 text-gray-400 hover:text-gray-200'
+                        variant="ghost"
                     >
                         <X className='h-4 w-4' />
                     </Button>
                 </PopoverClose>
-                <Button
-                    onClick={onAddCard}
-                    className='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
-                    variant={"ghost"}
-                >
-                    Add card ..
-                </Button>
-
-                <form
-                    action={onCopy}
-                >
-                    <input
-                        hidden
-                        name='id'
-                        value={data.id}
-                    />
-                    <input
-                        hidden
-                        name='boardId'
-                        value={data.boardId}
-                    />
-                    <FormSubmit
-                        variant='ghost'
-                        className='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
+                <div className="py-2">
+                    <Button
+                        onClick={onAddCard}
+                        className='w-full px-4 py-2 text-left text-sm font-normal text-gray-300 hover:bg-gray-700 transition-colors flex items-center'
+                        variant="ghost"
                     >
-                        Copy list ..
-                    </FormSubmit>
-                </form>
-                <Separator />
-                <form
-                    action={onDelete}
-                >
-                    <input
-                        hidden
-                        name='id'
-                        value={data.id}
-                    />
-                    <input
-                        hidden
-                        name='boardId'
-                        value={data.boardId}
-                    />
-                    <FormSubmit
-                        variant='ghost'
-                        className='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
-                    >
-                        Delete this list
-                    </FormSubmit>
-                </form>
+                        <Plus className='h-4 w-4 mr-2' />
+                        Add card
+                    </Button>
+                    <form action={onCopy}>
+                        <input hidden name='id' value={data.id} />
+                        <input hidden name='boardId' value={data.boardId} />
+                        <FormSubmit
+                            variant='ghost'
+                            className='w-full px-4 py-2 text-left text-sm font-normal text-gray-300 hover:bg-gray-700 transition-colors flex items-center'
+                        >
+                            <Copy className='h-4 w-4 mr-2' />
+                            Copy list
+                        </FormSubmit>
+                    </form>
+                    <Separator className='my-2 bg-gray-700' />
+                    <form action={onDelete}>
+                        <input hidden name='id' value={data.id} />
+                        <input hidden name='boardId' value={data.boardId} />
+                        <FormSubmit
+                            variant='ghost'
+                            className='w-full px-4 py-2 text-left text-sm font-normal text-red-400 hover:bg-red-900/30 transition-colors flex items-center'
+                        >
+                            <Trash2 className='h-4 w-4 mr-2' />
+                            Delete this list
+                        </FormSubmit>
+                    </form>
+                </div>
             </PopoverContent>
         </Popover>
     )

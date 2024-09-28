@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import path from 'path';
 import React from 'react'
 
 export type Organization = {
@@ -15,12 +14,14 @@ export type Organization = {
     imageUrl: string;
     name: string;
 }
+
 interface NavItemProps {
     isExpanded: boolean;
     isActive: boolean;
     organization: Organization;
     onExpand: (id: string) => void;
 }
+
 const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps) => {
     const routes = [
         {
@@ -50,29 +51,45 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
     const onClick = (href: string) => {
         router.push(href)
     }
+
     return (
         <AccordionItem
             value={organization.id}
             className='border-none'
         >
-            <AccordionTrigger onClick={() => onExpand(organization.id)} className={cn("flex items-center gap-x-2 p-1.5 text-neutral-200 rounded-md hover:bg-neutral-200/10 transition text-start no-underline hover:no-underline", isActive && !isExpanded && "bg-sky-200/10 text-sky-400")}>
-                <div className="flex items-center gap-x-2">
-                    <div className="w-7 h-7 relative">
+            <AccordionTrigger 
+                onClick={() => onExpand(organization.id)} 
+                className={cn(
+                    "flex items-center gap-x-2 p-3 text-gray-300 rounded-lg hover:bg-gray-800/50 transition-all duration-300 text-start no-underline hover:no-underline group",
+                    isActive && !isExpanded && "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                )}
+            >
+                <div className="flex items-center gap-x-3">
+                    <div className="w-10 h-10 relative overflow-hidden rounded-lg shadow-inner transition-transform duration-300 group-hover:scale-110">
                         <Image
                             fill
                             src={organization.imageUrl}
                             alt='Organization'
-                            className='rounded-sm object-cover'
+                            className='object-cover'
                         />
                     </div>
-                    <span className="font-medium text-sm">{organization.name}</span>
+                    <span className="font-semibold text-sm group-hover:text-white transition-colors duration-300">{organization.name}</span>
                 </div>
             </AccordionTrigger>
-            <AccordionContent className='pt-1 text-neutral-200'>
+            <AccordionContent className='pt-2 text-gray-300 space-y-1'>
                 {routes.map((route) => (
-                    <Button key={route.href} size={"sm"} onClick={() => onClick(route.href)} className={cn("w-full font-normal justify-start pl-10 mb-1", pathname === route.href && "bg-sky-500/10 text-sky-700")} variant={"ghost"}>
+                    <Button 
+                        key={route.href} 
+                        size="sm" 
+                        onClick={() => onClick(route.href)} 
+                        className={cn(
+                            "w-full font-normal justify-start pl-12 py-2 text-gray-300 hover:text-white hover:bg-gray-800/70 transition-all duration-300",
+                            pathname === route.href && "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
+                        )} 
+                        variant="ghost"
+                    >
                         {route.icon}
-                        {route.label}
+                        <span className="ml-2 text-sm">{route.label}</span>
                     </Button>
                 ))}
             </AccordionContent>
@@ -84,11 +101,9 @@ export default NavItem
 
 NavItem.Skeleton = function SkeletonNavItem() {
     return (
-        <div className="flex items-center gap-x-2">
-            <div className="w-10 h-10 relative shrink-0">
-                <Skeleton className='h-full w-full absolute' />
-            </div>
-            <Skeleton className='h-10 w-full' />
+        <div className="flex items-center gap-x-3 p-3 animate-pulse">
+            <Skeleton className="w-10 h-10 rounded-lg bg-gray-700" />
+            <Skeleton className="h-6 w-32 bg-gray-700" />
         </div>
     )
 }
