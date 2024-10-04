@@ -78,16 +78,18 @@ const Description = ({ data }: DescriptionProps) => {
                             ref={formRef}
                             className='space-y-2'
                         >
-                            <FormTextarea
-                                id='description'
-                                className='w-full mt-2'
-                                placeholder='Add a more detailed description'
-                                defaultValue={data.description || undefined}
-                                errors={fieldErrors}
-                                ref={textareaRef}
-                            />
+                            <div className="overflow-auto max-h-[200px]">
+                                <FormTextarea
+                                    id='description'
+                                    className='w-full mt-2'
+                                    placeholder='Add a more detailed description'
+                                    defaultValue={data.description || undefined}
+                                    errors={fieldErrors}
+                                    ref={textareaRef}
+                                />
+                            </div>
                             <div className="flex items-center gap-x-2">
-                                <FormSubmit className='text-white'>
+                                <FormSubmit className='text-white bg-blue-500 hover:bg-blue-700'>
                                     Save
                                 </FormSubmit>
                                 <Button
@@ -104,7 +106,7 @@ const Description = ({ data }: DescriptionProps) => {
                         <div
                             onClick={enableEditing}
                             role='button'
-                            className="min-h-[78px] bg-neutral-600 text-sm font-medium py-3 px-3.5 rounded-md">
+                            className="min-h-[78px] bg-neutral-600 text-sm font-medium py-3 px-3.5 rounded-md overflow-auto max-h-[200px] hover:bg-neutral-500 transition duration-150 ease-in-out">
                             {data.description || "Add a more detailed description"}
                         </div>
                     )

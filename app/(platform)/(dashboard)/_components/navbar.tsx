@@ -3,6 +3,7 @@ import Logo from '@/components/logo'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import React from 'react'
 import MobileSidebar from './mobile-sidebar'
+import { dark } from '@clerk/themes'
 
 const Navbar = () => {
     return (
@@ -21,43 +22,14 @@ const Navbar = () => {
                     afterLeaveOrganizationUrl='select-org'
                     afterSelectOrganizationUrl={"/organization/:id"}
                     appearance={{
-                        elements: {
-                            rootBox: {
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                color: "#fff",
-                                backgroundColor: "#1f2937",
-                                padding: "4px",
-                                borderRadius: "8px"
-                            },
-                            organizationSwitcherTrigger: {
-                                backgroundColor: "#1f2937",
-                            },
-                        },
-                        variables: {
-                            colorText: "#fff",
-                            colorBackground: "#1f2937",
-                        }
+                        baseTheme:dark
                     }}
                 />
 
                 <UserButton 
                     afterSignOutUrl='/' 
                     appearance={{
-                        elements: {
-                            avatarBox: {
-                                height: 32,
-                                width: 32
-                            },
-                            userButtonTrigger: {
-                                backgroundColor: "#1f2937",
-                            },
-                        },
-                        variables: {
-                            colorBackground: "#1f2937",
-                            colorText: "#fff"
-                        }
+                        baseTheme:dark
                     }} 
                 />
             </div>
