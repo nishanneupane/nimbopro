@@ -14,7 +14,6 @@ export const clerkAppearance: Appearance = {
         colorInputText: "#f3f4f6",
         colorText: "#f3f4f6",
         colorTextSecondary: "#9096a6",
-        colorNeutral: "#ffffff",
         borderRadius: "0.625rem",
         fontSize: "0.9375rem",
     },
