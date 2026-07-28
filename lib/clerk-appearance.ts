@@ -1,27 +1,47 @@
 import { dark } from "@clerk/themes"
 import type { Appearance } from "@clerk/types"
 
-// Shared Clerk appearance so every widget matches the brand (blue→purple on a
-// glassy gray-800 card) instead of the raw default dark theme.
+// Shared Clerk appearance. We theme almost entirely through `variables` so the
+// look stays consistent across every widget (SignIn, OrganizationList,
+// OrganizationSwitcher + its popover, UserButton). Heavy per-element class
+// overrides are avoided — they broke the org popovers (hidden icons).
 export const clerkAppearance: Appearance = {
     baseTheme: dark,
     variables: {
-        colorPrimary: "#8b5cf6",
-        colorBackground: "transparent",
-        colorInputBackground: "rgba(255,255,255,0.05)",
+        colorPrimary: "#6366f1",
+        colorBackground: "#0d1017",
+        colorInputBackground: "#161a24",
+        colorInputText: "#f3f4f6",
         colorText: "#f3f4f6",
-        colorTextSecondary: "#9ca3af",
-        borderRadius: "0.75rem",
+        colorTextSecondary: "#9096a6",
+        colorNeutral: "#ffffff",
+        borderRadius: "0.625rem",
+        fontSize: "0.9375rem",
     },
     elements: {
-        card: "bg-transparent shadow-none",
-        rootBox: "w-full",
-        headerTitle: "text-white",
-        headerSubtitle: "text-gray-400",
-        socialButtonsBlockButton:
-            "border-white/10 hover:bg-white/5 text-gray-200",
-        formButtonPrimary:
-            "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white normal-case",
-        footerActionLink: "text-blue-400 hover:text-blue-300",
+        card: "shadow-2xl border border-white/10",
+        headerTitle: "tracking-tight",
+        formButtonPrimary: "normal-case font-medium",
+
+        // Avatar triggers in the topbar
+        avatarBox: "ring-2 ring-white/10",
+
+        // UserButton popover
+        userButtonPopoverCard:
+            "rounded-xl border border-white/10 shadow-2xl bg-[#0d1017]",
+        userButtonPopoverActionButton:
+            "hover:bg-white/[0.06] transition-colors",
+        userButtonPopoverActionButtonIcon: "text-gray-400",
+        userButtonPopoverFooter: "hidden",
+
+        // OrganizationSwitcher popover
+        organizationSwitcherPopoverCard:
+            "rounded-xl border border-white/10 shadow-2xl bg-[#0d1017]",
+        organizationSwitcherPopoverActionButton:
+            "hover:bg-white/[0.06] transition-colors",
+        organizationSwitcherPopoverActionButtonIcon: "text-gray-400",
+        organizationSwitcherPopoverFooter: "hidden",
+        organizationPreviewMainIdentifier: "text-white font-medium",
+        organizationSwitcherTriggerIcon: "text-gray-400",
     },
 }
