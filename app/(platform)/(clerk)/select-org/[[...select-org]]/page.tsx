@@ -1,5 +1,5 @@
 import { OrganizationList } from '@clerk/nextjs'
-import { dark } from '@clerk/themes'
+import { clerkAppearance } from '@/lib/clerk-appearance'
 
 const CreateOrganizationPage = () => {
     return (
@@ -7,9 +7,7 @@ const CreateOrganizationPage = () => {
             hidePersonal
             afterSelectOrganizationUrl={"/organization/:id"}
             afterCreateOrganizationUrl={"/organization/:id"}
-            appearance={{
-                baseTheme:dark
-            }}
+            appearance={clerkAppearance}
         />
     )
 }

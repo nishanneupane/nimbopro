@@ -1,10 +1,6 @@
 import { SignUp } from "@clerk/nextjs";
-import { dark, shadesOfPurple } from '@clerk/themes'
+import { clerkAppearance } from "@/lib/clerk-appearance";
 
 export default function Page() {
-  return <SignUp
-    appearance={{
-      baseTheme: dark
-    }}
-  />;
+  return <SignUp appearance={clerkAppearance} />;
 }

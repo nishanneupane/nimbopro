@@ -3,7 +3,7 @@ import Logo from '@/components/logo'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import React from 'react'
 import MobileSidebar from './mobile-sidebar'
-import { dark } from '@clerk/themes'
+import { clerkAppearance } from '@/lib/clerk-appearance'
 
 const Navbar = () => {
     return (
@@ -21,16 +21,12 @@ const Navbar = () => {
                     afterCreateOrganizationUrl={"/organization/:id"}
                     afterLeaveOrganizationUrl='select-org'
                     afterSelectOrganizationUrl={"/organization/:id"}
-                    appearance={{
-                        baseTheme:dark
-                    }}
+                    appearance={clerkAppearance}
                 />
 
-                <UserButton 
-                    afterSignOutUrl='/' 
-                    appearance={{
-                        baseTheme:dark
-                    }} 
+                <UserButton
+                    afterSignOutUrl='/'
+                    appearance={clerkAppearance}
                 />
             </div>
         </nav>
