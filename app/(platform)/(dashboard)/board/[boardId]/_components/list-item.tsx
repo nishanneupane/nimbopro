@@ -34,7 +34,7 @@ const ListItem = ({ index, data }: ListItemProps) => {
                         className='shrink-0 h-full w-[272px] select-none'>
                         <div
                             {...provided.dragHandleProps}
-                            className="w-full rounded-lg bg-gray-800 shadow-lg pb-2 transition-all duration-200 ease-in-out hover:shadow-xl">
+                            className="w-full rounded-xl border border-border/60 bg-card/80 pb-2 shadow-elevate backdrop-blur transition-all duration-200 ease-in-out">
                             <ListHeader
                                 data={data}
                                 onAddCard={enableEditing}

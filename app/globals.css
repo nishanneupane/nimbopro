@@ -3,71 +3,81 @@
 @tailwind utilities;
 
 html,
-body,:root {
+body,
+:root {
   height: 100%;
 }
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Light — clean, Apple-quiet */
+    --background: 220 20% 99%;
+    --foreground: 224 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 224 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 224 25% 12%;
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    /* Brand accent — one confident indigo, used sparingly */
+    --primary: 243 75% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 224 20% 20%;
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 243 75% 96%;
+    --accent-foreground: 243 60% 40%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 243 75% 62%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    --brand: 243 75% 62%;
+    --brand-2: 268 70% 62%;
   }
 
-
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Dark — deep near-black with a cool cast, Linear-ish */
+    --background: 224 22% 6%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 224 20% 9%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 224 22% 8%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --primary: 243 80% 67%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 224 16% 14%;
+    --secondary-foreground: 210 20% 96%;
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted: 224 16% 13%;
+    --muted-foreground: 218 12% 60%;
 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 243 40% 18%;
+    --accent-foreground: 243 90% 85%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62% 47%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 224 14% 16%;
+    --input: 224 14% 18%;
+    --ring: 243 80% 67%;
+
+    --brand: 243 80% 67%;
+    --brand-2: 268 75% 66%;
   }
 }
 
@@ -76,6 +86,89 @@ body,:root {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv01", "cv11";
+  }
+  ::selection {
+    background: hsl(var(--brand) / 0.25);
+  }
+}
+
+@layer components {
+  /* Subtle brand gradient text — restrained, only for accents */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      100deg,
+      hsl(var(--foreground)),
+      hsl(var(--foreground)) 40%,
+      hsl(var(--brand-2))
+    );
+  }
+
+  .text-brand-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, hsl(var(--brand)), hsl(var(--brand-2)));
+  }
+
+  /* Glass surface for cards/nav */
+  .glass {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.7);
+  }
+
+  /* Fine grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Premium glow for hero cards */
+  .ring-brand {
+    box-shadow:
+      0 0 0 1px hsl(var(--brand) / 0.4),
+      0 20px 60px -20px hsl(var(--brand) / 0.45);
+  }
+
+  .shadow-elevate {
+    box-shadow:
+      0 1px 2px hsl(224 40% 3% / 0.4),
+      0 12px 32px -12px hsl(224 40% 3% / 0.55);
+  }
+}
+
+/* Entrance + ambient motion */
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-blob { animation: blob 18s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-down { animation: fade-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob, .animate-float, .animate-fade-up, .animate-fade-down {
+    animation: none;
   }
 }

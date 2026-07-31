@@ -38,22 +38,22 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
 
     if (isLoading) {
         return (
-            <div className="w-64 h-full sticky left-0 top-0 bg-gray-900 p-6 space-y-4">
-                <Skeleton className="h-8 w-full bg-gray-800 rounded-lg" />
-                <Skeleton className="h-12 w-full bg-gray-800 rounded-lg" />
-                <Skeleton className="h-12 w-full bg-gray-800 rounded-lg" />
-                <Skeleton className="h-12 w-full bg-gray-800 rounded-lg" />
+            <div className="sticky left-0 top-0 h-full w-64 space-y-4 border-r border-border/60 bg-card/40 p-6">
+                <Skeleton className="h-8 w-full rounded-lg" />
+                <Skeleton className="h-12 w-full rounded-lg" />
+                <Skeleton className="h-12 w-full rounded-lg" />
+                <Skeleton className="h-12 w-full rounded-lg" />
             </div>
         )
     }
 
     return (
-        <div className="w-64 h-full sticky left-0 top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6 overflow-y-auto shadow-2xl transition-all duration-300 ease-in-out">
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">Workspaces</h2>
-                <Button asChild type="button" size="sm" variant="ghost" className="hover:bg-gray-700 rounded-full p-2 transition-colors duration-200">
+        <div className="sticky left-0 top-0 h-full w-64 overflow-y-auto border-r border-border/60 bg-card/40 p-4">
+            <div className="mb-6 flex items-center justify-between px-2">
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Workspaces</h2>
+                <Button asChild type="button" size="icon" variant="ghost" className="h-8 w-8 rounded-lg text-muted-foreground hover:text-foreground">
                     <Link href="/select-org">
-                        <Plus className="h-5 w-5 text-blue-400 hover:text-purple-400 transition-colors duration-200" />
+                        <Plus className="h-4 w-4" />
                     </Link>
                 </Button>
             </div>
@@ -61,7 +61,7 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
             <Accordion
                 type="multiple"
                 defaultValue={defaultAccordionValue}
-                className="space-y-3"
+                className="space-y-1"
             >
                 {sortedOrganizations.map((org) => (
                     <NavItem

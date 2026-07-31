@@ -21,10 +21,10 @@ const ActivityList = async () => {
     });
 
     return (
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 rounded-lg shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-white">Activity Log</h2>
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-elevate">
+            <h2 className="mb-4 text-xl font-semibold tracking-tight text-foreground">Activity Log</h2>
             {auditLogs.length === 0 ? (
-                <p className="text-center text-gray-400 bg-gray-800 p-4 rounded-md shadow">
+                <p className="rounded-md border border-border bg-muted p-4 text-center text-muted-foreground">
                     No activity found inside this organization
                 </p>
             ) : (
@@ -42,8 +42,8 @@ export default ActivityList
 
 ActivityList.Skeleton = function ActivityListSkeleton() {
     return (
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 rounded-lg shadow-xl animate-pulse">
-            <div className="h-8 bg-gray-700 rounded w-1/3 mb-4"></div>
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-elevate">
+            <Skeleton className="mb-4 h-8 w-1/3" />
             <ol className="space-y-4">
                 {[...Array(5)].map((_, index) => (
                     <li key={index}>

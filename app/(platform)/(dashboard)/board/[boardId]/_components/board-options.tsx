@@ -20,17 +20,17 @@ const BoardOptions = ({ id }: { id: string }) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button className='h-auto w-auto p-2 hover:bg-neutral-800 transition' variant={"ghost"}>
-                    <MoreHorizontal className='h-4 w-4 text-neutral-400' />
+                <Button className='h-auto w-auto p-2 text-white hover:bg-white/20 transition' variant={"ghost"}>
+                    <MoreHorizontal className='h-4 w-4' />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="px-0 pt-3 pb-3 shadow-md bg-neutral-900 border border-neutral-800" side="bottom" align="end">
-                <div className="text-sm font-semibold text-center text-neutral-300 pb-4 border-b border-neutral-800">
+            <PopoverContent className="px-0 pb-3 pt-3" side="bottom" align="end">
+                <div className="border-b border-border pb-4 text-center text-sm font-semibold text-foreground">
                     Board Actions
                 </div>
                 <PopoverClose asChild>
                     <Button
-                        className='h-auto w-auto p-2 absolute top-2 right-2 text-neutral-400 hover:text-neutral-200 transition'
+                        className='absolute right-2 top-2 h-auto w-auto p-2 text-muted-foreground transition hover:text-foreground'
                         variant={"ghost"}
                     >
                         <X className='h-4 w-4' />
@@ -40,7 +40,7 @@ const BoardOptions = ({ id }: { id: string }) => {
                     variant={"ghost"}
                     onClick={onDelete}
                     disabled={isLoading}
-                    className='rounded-none w-full h-auto p-3 px-5 justify-start font-normal text-sm text-red-400 hover:text-red-300 hover:bg-red-900/50 transition'
+                    className='h-auto w-full justify-start rounded-none p-3 px-5 text-sm font-normal text-destructive transition hover:bg-destructive/10 hover:text-destructive'
                 >
                     <Trash2 className='h-4 w-4 mr-2' />
                     Delete this board

@@ -61,14 +61,14 @@ const ListForm = () => {
                 <form
                     action={onSubmit}
                     ref={formRef}
-                    className='w-full p-3 rounded-lg bg-gray-800 space-y-4 shadow-lg transition-all duration-200'
+                    className='w-full space-y-3 rounded-xl border border-border/60 bg-card/90 p-3 shadow-elevate backdrop-blur transition-all duration-200'
                 >
                     <FormInput
                         ref={inputRef}
                         errors={fieldErrors}
                         id='title'
-                        className='w-full text-sm px-3 py-2 h-10 font-medium border-2 border-gray-600 rounded-md focus:border-blue-400 focus:ring-2 focus:ring-blue-700 transition-all'
-                        placeholder='Enter List title'
+                        className='h-10 w-full rounded-md px-3 py-2 text-sm font-medium'
+                        placeholder='Enter list title'
                     />
                     <input
                         hidden
@@ -77,14 +77,13 @@ const ListForm = () => {
                     />
 
                     <div className="flex items-center gap-x-2">
-                        <FormSubmit className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+                        <FormSubmit className="flex-1">
                             Add list
                         </FormSubmit>
                         <Button
                             onClick={disableEditing}
-                            size={"sm"}
-                            variant={"outline"}
-                            className="border-2 border-gray-600 hover:bg-gray-700 transition-colors"
+                            size={"icon"}
+                            variant={"ghost"}
                         >
                             <X className='h-5 w-5' />
                         </Button>
@@ -93,7 +92,7 @@ const ListForm = () => {
             ) : (
                 <button
                     onClick={enableEditing}
-                    className='w-full rounded-lg bg-black/30 hover:bg-black/40 transition-all duration-200 p-3 flex items-center justify-center font-medium text-sm text-white'
+                    className='flex w-full items-center justify-center rounded-xl border border-white/20 bg-white/10 p-3 text-sm font-medium text-white backdrop-blur transition-all duration-200 hover:bg-white/20'
                 >
                     <Plus className='h-5 w-5 mr-2' />
                     Add a list

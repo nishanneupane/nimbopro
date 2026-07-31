@@ -5,26 +5,25 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className="w-full p-4 border-t bg-slate-900">
-            <div className="md:max-w-screen-2xl mx-auto flex items-center w-full justify-between">
-                <Logo />
+        <footer className="w-full border-t border-border/60 bg-background">
+            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6">
+                <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+                    <Logo />
+                    <p className="text-xs text-muted-foreground">
+                        © {new Date().getFullYear()} Nimbopro. All rights reserved.
+                    </p>
+                </div>
 
-                <div className="space-x-4 md:block md:w-auto flex items-center justify-between w-full">
-                    <Button size={"sm"} variant={"ghost"} asChild>
-                        <Link href={"/privacy-policy"}>
-                            Privacy Policy
-                        </Link>
+                <div className="flex items-center gap-1">
+                    <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
+                        <Link href="/privacy-policy">Privacy Policy</Link>
                     </Button>
-                    <Button size={"sm"} variant={"ghost"} asChild>
-                        <Link href={"/terms"}>
-                            Terms of Service
-                        </Link>
-
+                    <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
+                        <Link href="/terms">Terms of Service</Link>
                     </Button>
-
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 

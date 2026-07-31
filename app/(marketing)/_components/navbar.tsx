@@ -5,21 +5,22 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <nav className="fixed top-0 w-full h-16 px-6 bg-gray-900 flex items-center z-10">
-            <div className="max-w-7xl mx-auto flex items-center w-full justify-between">
+        <nav className="fixed top-0 z-50 h-16 w-full border-b border-border/60 glass">
+            <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-6">
                 <Logo />
 
-                <div className="flex items-center space-x-6">
-                    <Link href="#features" className="text-white hover:text-gray-200 transition-colors">
-                        Features
-                    </Link>
-                    <Link href="#pricing" className="text-white hover:text-gray-200 transition-colors">
-                        Pricing
-                    </Link>
-                    <Button size="sm" variant="secondary" asChild className="bg-gray-800 text-white hover:bg-gray-700 transition-colors">
-                        <Link href="/sign-in">
-                            Login
-                        </Link>
+                <div className="flex items-center gap-1 sm:gap-2">
+                    <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground">
+                        <Link href="#features">Features</Link>
+                    </Button>
+                    <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground">
+                        <Link href="#pricing">Pricing</Link>
+                    </Button>
+                    <Button asChild variant="ghost" size="sm">
+                        <Link href="/sign-in">Log in</Link>
+                    </Button>
+                    <Button asChild size="sm" className="rounded-full px-4">
+                        <Link href="/sign-up">Get started</Link>
                     </Button>
                 </div>
             </div>

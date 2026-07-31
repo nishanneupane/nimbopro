@@ -62,19 +62,19 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                    <MoreHorizontal className='h-5 w-5 rounded-md text-gray-700 hover:text-gray-600 transition-colors ' />
+                    <MoreHorizontal className='h-5 w-5 rounded-md text-muted-foreground transition-colors hover:text-foreground' />
             </PopoverTrigger>
             <PopoverContent
-                className='w-64 p-0 rounded-lg shadow-lg bg-gray-800 border border-gray-700'
+                className='w-64 p-0'
                 side='bottom'
                 align='end'
             >
-                <div className="px-4 py-3 text-sm font-medium text-gray-200 border-b border-gray-700">
+                <div className="border-b border-border px-4 py-3 text-sm font-medium text-foreground">
                     List Actions
                 </div>
                 <PopoverClose ref={closeRef} asChild>
                     <Button
-                        className='h-6 w-6 p-0 absolute top-2 right-2 text-gray-400 hover:text-gray-200'
+                        className='absolute right-2 top-2 h-6 w-6 p-0 text-muted-foreground hover:text-foreground'
                         variant="ghost"
                     >
                         <X className='h-4 w-4' />
@@ -83,7 +83,7 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                 <div className="py-2">
                     <Button
                         onClick={onAddCard}
-                        className='w-full px-4 py-2 text-left text-sm font-normal text-gray-300 hover:bg-gray-700 transition-colors flex items-center'
+                        className='flex w-full items-center justify-start px-4 py-2 text-sm font-normal'
                         variant="ghost"
                     >
                         <Plus className='h-4 w-4 mr-2' />
@@ -94,19 +94,19 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                         <input hidden name='boardId' value={data.boardId} />
                         <FormSubmit
                             variant='ghost'
-                            className='w-full px-4 py-2 text-left text-sm font-normal text-gray-300 hover:bg-gray-700 transition-colors flex items-center'
+                            className='flex w-full items-center justify-start px-4 py-2 text-sm font-normal'
                         >
                             <Copy className='h-4 w-4 mr-2' />
                             Copy list
                         </FormSubmit>
                     </form>
-                    <Separator className='my-2 bg-gray-700' />
+                    <Separator className='my-2' />
                     <form action={onDelete}>
                         <input hidden name='id' value={data.id} />
                         <input hidden name='boardId' value={data.boardId} />
                         <FormSubmit
                             variant='ghost'
-                            className='w-full px-4 py-2 text-left text-sm font-normal text-red-400 hover:bg-red-900/30 transition-colors flex items-center'
+                            className='flex w-full items-center justify-start px-4 py-2 text-sm font-normal text-destructive hover:bg-destructive/10 hover:text-destructive'
                         >
                             <Trash2 className='h-4 w-4 mr-2' />
                             Delete this list

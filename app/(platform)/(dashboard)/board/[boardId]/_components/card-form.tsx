@@ -64,7 +64,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
             <form
                 ref={formRef}
                 action={onSubmit}
-                className='bg-gray-900 shadow-lg rounded-lg p-4 space-y-4'
+                className='space-y-3 rounded-xl border border-border/60 bg-card/95 p-3 shadow-elevate backdrop-blur'
             >
                 <FormTextarea
                     id='title'
@@ -72,7 +72,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
                     ref={ref}
                     placeholder='Enter a title for this card ..'
                     errors={fieldErrors}
-                    className='w-full resize-none border-none rounded-md focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white placeholder-gray-400'
+                    className='w-full resize-none rounded-md'
                 />
                 <input
                     hidden
@@ -81,17 +81,13 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
                     value={listId}
                 />
                 <div className="flex items-center gap-x-2">
-                    <FormSubmit 
-                        variant='primary'
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 shadow-md"
-                    >
+                    <FormSubmit>
                         Add card
                     </FormSubmit>
                     <Button
                         onClick={disableEditing}
-                        size="sm"
+                        size="icon"
                         variant="ghost"
-                        className="text-gray-400 hover:text-gray-200 transition duration-200"
                     >
                         <X className='h-5 w-5' />
                     </Button>
@@ -104,7 +100,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, enabl
         <div className='pt-2 px-2'>
             <Button
                 onClick={enableEditing}
-                className='h-auto px-4 py-3 w-full justify-start text-gray-300 text-sm bg-gray-800 hover:bg-gray-700 transition duration-200 rounded-lg shadow-md'
+                className='h-auto w-full justify-start rounded-lg px-4 py-3 text-sm text-muted-foreground transition hover:bg-accent hover:text-foreground'
                 variant="ghost"
                 size="sm"
             >

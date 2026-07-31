@@ -57,15 +57,15 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
             value={organization.id}
             className='border-none'
         >
-            <AccordionTrigger 
-                onClick={() => onExpand(organization.id)} 
+            <AccordionTrigger
+                onClick={() => onExpand(organization.id)}
                 className={cn(
-                    "flex items-center gap-x-2 p-3 text-gray-300 rounded-lg hover:bg-gray-800/50 transition-all duration-300 text-start no-underline hover:no-underline group",
-                    isActive && !isExpanded && "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                    "group flex items-center gap-x-2 rounded-lg p-2 text-start text-muted-foreground no-underline transition hover:bg-accent hover:text-foreground hover:no-underline",
+                    isActive && !isExpanded && "bg-accent text-accent-foreground"
                 )}
             >
                 <div className="flex items-center gap-x-3">
-                    <div className="w-10 h-10 relative overflow-hidden rounded-lg shadow-inner transition-transform duration-300 group-hover:scale-110">
+                    <div className="relative h-8 w-8 overflow-hidden rounded-md border border-border">
                         <Image
                             fill
                             src={organization.imageUrl}
@@ -73,19 +73,19 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
                             className='object-cover'
                         />
                     </div>
-                    <span className="font-semibold text-sm group-hover:text-white transition-colors duration-300">{organization.name}</span>
+                    <span className="text-sm font-medium">{organization.name}</span>
                 </div>
             </AccordionTrigger>
-            <AccordionContent className='pt-2 text-gray-300 space-y-1'>
+            <AccordionContent className='space-y-1 pt-1'>
                 {routes.map((route) => (
-                    <Button 
-                        key={route.href} 
-                        size="sm" 
-                        onClick={() => onClick(route.href)} 
+                    <Button
+                        key={route.href}
+                        size="sm"
+                        onClick={() => onClick(route.href)}
                         className={cn(
-                            "w-full font-normal justify-start pl-12 py-2 text-gray-300 hover:text-white hover:bg-gray-800/70 transition-all duration-300",
-                            pathname === route.href && "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
-                        )} 
+                            "w-full justify-start pl-11 font-normal text-muted-foreground transition hover:bg-accent hover:text-foreground",
+                            pathname === route.href && "bg-primary/10 font-medium text-primary hover:bg-primary/10 hover:text-primary"
+                        )}
                         variant="ghost"
                     >
                         {route.icon}

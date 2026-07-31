@@ -34,34 +34,27 @@ export const SubscriptionButton = ({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)]">
+    <div className="flex w-full max-w-md flex-col items-center justify-center rounded-2xl border border-border bg-card p-8 shadow-elevate">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 tracking-tight">
+        <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           {isPro ? "Pro Plan" : "Free Plan"}
         </h1>
-        <p className="mt-2 text-sm text-gray-400">
+        <p className="mt-2 text-sm text-muted-foreground">
           {isPro ? "Enjoy premium features" : "Upgrade for more power"}
         </p>
       </div>
-      <div className="mb-10 relative">
+      <div className="relative mb-10 flex h-24 w-24 items-center justify-center rounded-2xl bg-accent">
         {isPro ? (
-          <CreditCard className="w-20 h-20 text-purple-400 animate-pulse" />
+          <CreditCard className="h-12 w-12 text-primary" />
         ) : (
-          <Sparkles className="w-20 h-20 text-blue-400 animate-bounce" />
+          <Sparkles className="h-12 w-12 text-primary animate-float" />
         )}
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
       </div>
       <Button
         variant={isPro ? "secondary" : "default"}
         onClick={onClick}
         disabled={isLoading}
-        className={`w-64 h-16 text-lg font-semibold rounded-full transition-all duration-300 ${
-          isPro 
-            ? "bg-purple-600 hover:bg-purple-700 text-white" 
-            : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
-        } transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 ${
-          isPro ? "focus:ring-purple-500" : "focus:ring-blue-500"
-        } shadow-lg hover:shadow-xl`}
+        className="h-14 w-64 rounded-full text-lg font-semibold shadow-elevate transition hover:scale-[1.02]"
       >
         {isPro ? (
           <span className="flex items-center justify-center">
@@ -75,7 +68,7 @@ export const SubscriptionButton = ({
           </span>
         )}
       </Button>
-      <p className="mt-4 text-xs text-gray-500">
+      <p className="mt-4 text-xs text-muted-foreground">
         {isPro ? "Cancel anytime" : "7-day free trial, cancel anytime"}
       </p>
     </div>

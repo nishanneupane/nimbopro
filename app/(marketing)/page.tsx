@@ -3,100 +3,213 @@ import Link from 'next/link'
 import React from 'react'
 import LocalFont from "next/font/local"
 import { cn } from '@/lib/utils'
-import { Building, Globe, TabletSmartphone, Zap, Users, Lock } from 'lucide-react'
+import {
+    Building2, Globe2, Smartphone, Zap, Users, Lock,
+    ArrowRight, Check, Sparkles, Star
+} from 'lucide-react'
 
 const headingFont = LocalFont({
     src: "../../public/fonts/font.woff2"
 })
 
+const features = [
+    { icon: Smartphone, title: "Works everywhere", description: "Pixel-perfect from your 6-inch phone to a 40-inch display. No compromises." },
+    { icon: Building2, title: "Built for teams", description: "Organize people into workspaces and keep every project exactly where it belongs." },
+    { icon: Globe2, title: "Always in sync", description: "Cloud-native and real-time. Open a board on any device and pick up mid-thought." },
+    { icon: Zap, title: "Ridiculously fast", description: "Instant loads, optimistic updates, zero spinners staring back at you." },
+    { icon: Users, title: "Real collaboration", description: "Drag, drop, comment, assign. Watch the board move as your team moves." },
+    { icon: Lock, title: "Secure by default", description: "Encryption in transit and at rest, with permissions you actually control." },
+]
+
+const plans = [
+    {
+        name: "Free", price: "$0", cadence: "forever", cta: "Start for free", href: "/sign-up", featured: false,
+        features: ["Up to 5 boards", "Basic collaboration", "Responsive UI", "Core features"],
+    },
+    {
+        name: "Pro", price: "$20", cadence: "/month", cta: "Upgrade to Pro", href: "/sign-in", featured: true,
+        features: ["Unlimited boards", "Team collaboration", "Activity tracking", "Advanced analytics", "Priority support", "Everything in Free"],
+    },
+]
+
 const MarketingPage = () => {
     return (
-        <div className='flex flex-col items-center justify-start bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-gray-100 overflow-hidden'>
-            {/* Hero Section */}
-            <section className="w-full py-32 px-4 sm:px-6 lg:px-8 relative">
-                <div className="max-w-7xl mx-auto">
-                    <div className={cn("text-center", headingFont.className)}>
-                        <h1 className="text-6xl md:text-8xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 animate-fade-in-down">
-                            Redefine Productivity with Nimbopro
-                        </h1>
-                        <p className="text-2xl md:text-3xl text-gray-300 mt-6 max-w-3xl mx-auto animate-fade-in-up">
-                            Elevate your workflow, amplify collaboration, and shatter productivity barriers.
-                        </p>
-                        <div className="mt-12 animate-fade-in-up">
-                            <Button className='text-xl font-semibold py-4 px-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:scale-105'>
-                                <Link href="/sign-up">
-                                    Start For Free
-                                </Link>
-                            </Button>
+        <div className="flex flex-col items-center w-full text-foreground">
+            {/* Hero */}
+            <section className="relative w-full overflow-hidden px-4 pt-28 pb-24 sm:pt-36">
+                {/* ambient glow */}
+                <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+                <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+                    <div className="absolute left-1/4 top-0 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-[hsl(var(--brand)/0.25)] blur-[120px] animate-blob" />
+                    <div className="absolute right-1/4 top-20 h-[24rem] w-[24rem] translate-x-1/2 rounded-full bg-[hsl(var(--brand-2)/0.22)] blur-[120px] animate-blob animation-delay-2000" />
+                </div>
+
+                <div className="mx-auto max-w-5xl text-center">
+                    <Link
+                        href="#features"
+                        className="animate-fade-down inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur transition hover:border-primary/40 hover:text-foreground"
+                    >
+                        <Sparkles className="h-3.5 w-3.5 text-primary" />
+                        New — real-time boards, now faster
+                        <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+
+                    <h1 className={cn(
+                        "animate-fade-up mt-8 text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl",
+                        headingFont.className
+                    )}>
+                        The workspace where
+                        <br />
+                        <span className="text-brand-gradient">work actually flows.</span>
+                    </h1>
+
+                    <p className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+                        Nimbopro turns scattered tasks into boards your whole team can move together — organized, real-time, and genuinely nice to use.
+                    </p>
+
+                    <div className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                        <Button asChild size="lg" className="group h-12 rounded-full px-7 text-base shadow-elevate">
+                            <Link href="/sign-up">
+                                Start for free
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                            </Link>
+                        </Button>
+                        <Button asChild size="lg" variant="outline" className="h-12 rounded-full px-7 text-base">
+                            <Link href="#pricing">See pricing</Link>
+                        </Button>
+                    </div>
+
+                    <p className="animate-fade-up mt-5 text-sm text-muted-foreground">
+                        No credit card required · Free plan forever
+                    </p>
+                </div>
+
+                {/* Product mock — a tiny playful board preview */}
+                <div className="animate-fade-up mx-auto mt-20 max-w-5xl">
+                    <div className="ring-brand rounded-2xl bg-card/80 p-3 backdrop-blur">
+                        <div className="rounded-xl border border-border bg-background/60 p-4">
+                            <div className="mb-4 flex items-center gap-1.5">
+                                <span className="h-3 w-3 rounded-full bg-destructive/70" />
+                                <span className="h-3 w-3 rounded-full bg-amber-400/70" />
+                                <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
+                                <span className="ml-3 text-xs text-muted-foreground">nimbopro · marketing sprint</span>
+                            </div>
+                            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                                {[
+                                    { title: "To do", cards: ["Draft launch copy", "Design hero", "Book studio time"] },
+                                    { title: "In progress", cards: ["Record demo 🎬", "Ship pricing page"] },
+                                    { title: "Done", cards: ["Kickoff ✅", "Brand refresh"] },
+                                ].map((col) => (
+                                    <div key={col.title} className="rounded-lg border border-border bg-card p-3 text-left">
+                                        <p className="mb-2 text-xs font-medium text-muted-foreground">{col.title}</p>
+                                        <div className="space-y-2">
+                                            {col.cards.map((c) => (
+                                                <div key={c} className="rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm">
+                                                    {c}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-[-1]">
-                    <div className="absolute w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                    <div className="absolute w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-                    <div className="absolute w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+            </section>
+
+            {/* Social proof strip */}
+            <section className="w-full border-y border-border/60 py-10">
+                <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 text-center">
+                    <div className="flex items-center gap-1 text-amber-400">
+                        {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                        Loved by <span className="font-medium text-foreground">2,000+</span> teams shipping their best work.
+                    </p>
                 </div>
             </section>
 
-            {/* Features Section */}
-            <section id="features" className="w-full py-32 px-4 sm:px-6 lg:px-8 bg-gray-800">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-5xl font-bold text-center mb-16 text-white animate-fade-in-up">
-                        Key Features
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                        {[
-                            { icon: TabletSmartphone, title: "Responsive Design", description: "Seamlessly adapt to any device, anytime, anywhere." },
-                            { icon: Building, title: "Organizational Tools", description: "Connect teams and departments efficiently." },
-                            { icon: Globe, title: "Global Accessibility", description: "Access from anywhere with our cloud-based solution." },
-                            { icon: Zap, title: "Fast Performance", description: "Experience quick load times and real-time updates." },
-                            { icon: Users, title: "Team Collaboration", description: "Foster teamwork with intuitive sharing features." },
-                            { icon: Lock, title: "Enhanced Security", description: "Keep your data safe with advanced encryption." },
-                        ].map((feature, index) => (
+            {/* Features */}
+            <section id="features" className="w-full px-4 py-28">
+                <div className="mx-auto max-w-6xl">
+                    <div className="mx-auto max-w-2xl text-center">
+                        <p className="text-sm font-medium uppercase tracking-widest text-primary">Features</p>
+                        <h2 className={cn("mt-3 text-4xl font-semibold tracking-tight sm:text-5xl", headingFont.className)}>
+                            Everything you need. Nothing you don&apos;t.
+                        </h2>
+                        <p className="mt-4 text-lg text-muted-foreground">
+                            A focused set of tools that get out of your way so the work stays front and center.
+                        </p>
+                    </div>
+
+                    <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                        {features.map((f) => (
                             <div
-                                key={index}
-                                className="bg-gray-700 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 group animate-fade-in-up"
-                                style={{ animationDelay: `${index * 100}ms` }}
+                                key={f.title}
+                                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevate"
                             >
-                                <feature.icon className="h-16 w-16 mb-6 text-blue-400 group-hover:text-purple-400 transition-colors duration-300" />
-                                <h3 className="text-2xl font-semibold mb-4 text-white">{feature.title}</h3>
-                                <p className="text-gray-300 text-lg">{feature.description}</p>
+                                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-accent-foreground transition group-hover:scale-110">
+                                    <f.icon className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-lg font-semibold">{f.title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Pricing Section */}
-            <section id="pricing" className="w-full py-32 px-4 sm:px-6 lg:px-8 bg-gray-900">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-5xl font-bold text-center mb-16 text-white animate-fade-in-up">
-                        Simple Pricing, Powerful Features
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                        {[
-                            { name: "Free", price: "$0", features: ["Up to 5 Creations", "Basic Collaboration", "Responsive UI", "Essential Features"] },
-                            { name: "Pro", price: "$20", features: ["Unlimited Creations", "Multi-Person Collaboration", "Rich Feature Set", "Responsive and UI Friendly", "Activity Tracking", "Priority Support", "Advanced Analytics"] },
-                        ].map((plan, index) => (
+            {/* Pricing */}
+            <section id="pricing" className="w-full px-4 py-28">
+                <div className="mx-auto max-w-5xl">
+                    <div className="mx-auto max-w-2xl text-center">
+                        <p className="text-sm font-medium uppercase tracking-widest text-primary">Pricing</p>
+                        <h2 className={cn("mt-3 text-4xl font-semibold tracking-tight sm:text-5xl", headingFont.className)}>
+                            Simple pricing, powerful features
+                        </h2>
+                        <p className="mt-4 text-lg text-muted-foreground">
+                            Start free. Upgrade when your team outgrows it — never before.
+                        </p>
+                    </div>
+
+                    <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+                        {plans.map((plan) => (
                             <div
-                                key={index}
-                                className={`bg-gray-800 rounded-3xl p-10 shadow-2xl ${index === 1 ? 'border-2 border-blue-500 transform scale-105' : ''} hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up`}
-                                style={{ animationDelay: `${index * 200}ms` }}
+                                key={plan.name}
+                                className={cn(
+                                    "relative rounded-2xl border bg-card p-8 transition duration-300",
+                                    plan.featured
+                                        ? "border-primary/50 ring-brand"
+                                        : "border-border hover:border-primary/30 hover:shadow-elevate"
+                                )}
                             >
-                                <h3 className="text-3xl font-bold mb-4 text-white">{plan.name}</h3>
-                                <p className="text-5xl font-bold mb-8 text-white">{plan.price}<span className="text-2xl font-normal text-gray-400">{index === 0 ? '' : '/month'}</span></p>
-                                <ul className="mb-10 space-y-4">
-                                    {plan.features.map((feature, fIndex) => (
-                                        <li key={fIndex} className="flex items-center text-gray-300 text-lg" >
-                                            <Zap className="h-6 w-6 mr-3 text-blue-400" />
-                                            {feature}
+                                {plan.featured && (
+                                    <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground shadow-elevate">
+                                        Most popular
+                                    </span>
+                                )}
+                                <h3 className="text-xl font-semibold">{plan.name}</h3>
+                                <div className="mt-4 flex items-baseline gap-1">
+                                    <span className="text-5xl font-semibold tracking-tight">{plan.price}</span>
+                                    <span className="text-muted-foreground">{plan.cadence}</span>
+                                </div>
+                                <ul className="mt-8 space-y-3">
+                                    {plan.features.map((feature) => (
+                                        <li key={feature} className="flex items-center gap-3 text-sm">
+                                            <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                                                <Check className="h-3 w-3" />
+                                            </span>
+                                            <span className="text-muted-foreground">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <Button className={`w-full py-4 rounded-full font-semibold text-xl ${index === 1 ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700' : 'bg-gray-700 text-white hover:bg-gray-600'} transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105`}>
-                                    <Link href={index === 0 ? '/sign-up' : '/sign-in'}>
-                                        {index === 0 ? 'Get Started' : 'Upgrade to Pro'}
-                                    </Link>
+                                <Button
+                                    asChild
+                                    size="lg"
+                                    variant={plan.featured ? "default" : "outline"}
+                                    className="mt-8 h-12 w-full rounded-full text-base"
+                                >
+                                    <Link href={plan.href}>{plan.cta}</Link>
                                 </Button>
                             </div>
                         ))}
@@ -104,20 +217,24 @@ const MarketingPage = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="w-full py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900 to-purple-900 relative overflow-hidden">
-                <div className="max-w-5xl mx-auto text-center relative z-10 animate-fade-in-up">
-                    <h2 className="text-5xl font-bold mb-8 text-white">Ready to Revolutionize Your Workflow?</h2>
-                    <p className="text-3xl mb-12 text-gray-300">Join thousands of teams already experiencing the future of productivity.</p>
-                    <Button className='text-xl font-semibold py-4 px-12 rounded-full bg-white text-blue-900 hover:bg-gray-100 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:scale-105'>
+            {/* CTA */}
+            <section className="w-full px-4 pb-28">
+                <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border bg-card px-6 py-20 text-center">
+                    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+                        <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[hsl(var(--brand)/0.25)] blur-[100px] animate-blob" />
+                    </div>
+                    <h2 className={cn("mx-auto max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl", headingFont.className)}>
+                        Ready to move work forward?
+                    </h2>
+                    <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
+                        Join thousands of teams already running their day on Nimbopro. It&apos;s free to start.
+                    </p>
+                    <Button asChild size="lg" className="group mt-10 h-12 rounded-full px-8 text-base shadow-elevate">
                         <Link href="/sign-up">
-                            Start Your Free Trial
+                            Start your free trial
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                         </Link>
                     </Button>
-                </div>
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                    <div className="absolute w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                    <div className="absolute w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
                 </div>
             </section>
         </div>
