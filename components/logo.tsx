@@ -10,24 +10,26 @@ const headingFont = LocalFont({
 
 const Logo = () => {
   return (
-    <Link href={"/"} className="transition hover:opacity-80">
-      <div className="flex items-center gap-x-2">
-        <Image
-          src={"/logo.png"}
-          alt="Nimbopro logo"
-          height={24}
-          width={24}
-          className="rounded-md"
-        />
-        <p
-          className={cn(
-            "pb-0.5 text-lg font-semibold tracking-tight text-foreground",
-            headingFont.className,
-          )}
-        >
-          Nimbopro
-        </p>
-      </div>
+    <Link
+      href={"/"}
+      className="group inline-flex items-center gap-2 transition hover:opacity-90"
+    >
+      <Image
+        src={"/logo.png"}
+        alt="Nimbopro logo"
+        height={28}
+        width={28}
+        priority
+        className="h-7 w-7 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+      />
+      <span
+        className={cn(
+          "text-[1.15rem] font-semibold leading-none tracking-tight text-foreground",
+          headingFont.className,
+        )}
+      >
+        Nimbopro
+      </span>
     </Link>
   );
 };

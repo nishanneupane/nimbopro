@@ -24,6 +24,8 @@ model Board {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   lists     List[]
+
+  @@index([orgId])
 }
 
 model List {
@@ -81,6 +83,9 @@ model AuditLog {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([orgId, createdAt])
+  @@index([orgId, entityType, entityId])
 }
 
 model OrgLimit {
